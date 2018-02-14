@@ -1,7 +1,5 @@
 FROM alpine:3.6
 
-MAINTAINER Allthings Developers <dev@allthings.me>
-
 RUN apk --no-cache add \
     nodejs \
     nodejs-npm \
