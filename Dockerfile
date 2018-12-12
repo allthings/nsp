@@ -1,10 +1,6 @@
-FROM alpine:3.8
+FROM alpine:edge
 
-RUN apk --no-cache add \
-    nodejs \
-    nodejs-npm \
-  && npm install -g \
-    nsp
+RUN apk --no-cache add yarn
 
 # Add node user/group with uid/gid 1000:
 # This is a workaround for boot2docker issue #581, see
@@ -13,6 +9,6 @@ RUN adduser -D -u 1000 node
 
 USER node
 
-ENTRYPOINT ["nsp"]
+ENTRYPOINT ["yarn"]
 
-CMD ["check"]
+CMD ["install", "--audit", "--ignore-scripts"]
